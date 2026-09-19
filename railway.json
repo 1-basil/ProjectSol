@@ -1,0 +1,8 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "deploy": {
+    "startCommand": "cd apps/prototype-server && umask 077 && printf '%s' \"$POOLED_WALLET_KEYPAIR_JSON\" > /tmp/pooled-wallet.json && POOLED_WALLET_KEYPAIR_PATH=/tmp/pooled-wallet.json node src/server.ts",
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 5
+  }
+}
