@@ -15,6 +15,14 @@ import { Keypair, PublicKey } from "@solana/web3.js";
 
 export function loadPooledWallet(): Keypair {
   const path = process.env.POOLED_WALLET_KEYPAIR_PATH;
+  // Hosted-deploy fallback (Railway etc.), used only when no file path is
+  // configured: the same 64-byte JSON array, supplied via the platform's
+  // encrypted secret store. Prefer the file path wherever a filesystem is
+  // available; never log or echo this value.
+  const inlineJson = process.env.POOLED_WALLET_KEYPAIR_JSON;
+  if (!path && inlineJson) {
+    return Keypair.fromSecretKey(Uint8Array.from(JSON.parse(inlineJson) as number[]));
+  }
   if (!path) {
     throw new Error(
       "loadPooledWallet: POOLED_WALLET_KEYPAIR_PATH is not set. Generate one with " +
