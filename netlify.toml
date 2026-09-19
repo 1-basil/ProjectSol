@@ -1,0 +1,9 @@
+# Netlify builds only the website (apps/web). The prototype-server backend
+# needs a persistent host and is NOT deployed here.
+[build]
+  base = "apps/web"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
