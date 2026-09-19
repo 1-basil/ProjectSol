@@ -1,0 +1,11 @@
+{
+  "name": "@platform/accounting",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Unit ledger, deposit-allocation comparator, and monetary representation primitives. No floating point. See docs/specs/comparator-spec.md, allocation-spec.md, reserve-spec.md.",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "node --test"
+  }
+}
